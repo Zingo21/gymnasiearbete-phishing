@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" type="text/css"> 
+<link rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -15,29 +15,45 @@
  $(document).ready(function () {
  $(".button-collapse").sideNav();
 });
+
+$(document).ready(function() {
+    M.updateTextFields();
+  });
 </script>
 
 <!-- CSS kod -->
 <style type="text/css">
+.footer-name2{
+    padding-left: 500px;
+}
 
+.main-text{
+    padding-left: 50px;
+    padding-right: 50px;
+}
 </style>
-<title>Email Phishing</title>
+<title>Gymnasiearbete phishing - Email Phishing</title>
 </head>
     <body>
         <div class="navbar-fixed">
             <nav class="blue darken-3">
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Email phishing</a>
+                    <a href="#" class="brand-logo">Gymnasiearbete phishing</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#">Start</a></li> <!-- Lägg till länkar vid behov -->
+                        <li><a href="#">Start</a></li> 
+                        <li><a href="#">Phishing</a></li> 
+                        <li><a href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li> <!-- Lägg till länkar vid behov -->
                     </ul>
             
                 </div>
             </nav>
         </div>
         <ul class="side-nav" id="mobile-demo">
-            <li><a href="#">Hem</a></li> <!-- Lägg till länkar vid behov -->
+            <li><a class="waves-effect waves-light btn blue darken-3" href="#"><i class="material-icons left">home</i>Startsida</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3" href="#">Phishing</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3">Länk</a></li>
+            <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li><!-- Lägg till länkar vid behov -->
         </ul>
 
         <header class="main-text">
@@ -46,10 +62,44 @@
             <h4>På denna sida kommer det att visas hur get går till när en användare som jobbar på ett företag öppnar ett mail och klickar på en länk som innehåller skadlig kod:</h4>
         
             <h5>Email Phishing:
-            <a href="#">Länk</a></h5>
-            <a class="waves-effect waves-light btn">Länk</a>
-            <a class="waves-effect waves-light btn"><i class="material-icons right">arrow_forward</i>fortsätt</a>
-            <a class="waves-effect waves-light btn"><i class="material-icons left">arrow_back</i>tillbaka</a>
+            <a href="emailPhishing.php">PHP-länk</a></h5>
+
+            <a class="waves-effect waves-light btn blue darken-1"><i class="material-icons left">arrow_back</i>Tillbaka</a>
+            <a class="waves-effect waves-light btn blue darken-1"><i class="material-icons right">arrow_forward</i>Fortsätt</a>
+            <br>
+            <br>
+            <a class="waves-effect waves-light btn blue darken-1"><i class="material-icons left">link</i>Länk till artikel</a>
+            
+            <br>
+            <br>
+            <h5>Logga in:</h5>
+            <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix"><h5>email</h5></i>
+                      <input id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix"><h5>lock</h5></i>
+                      <input id="icon_password" type="tel" class="validate">
+                      <label for="icon_password">Password</label>
+                    </div>
+                  </div>
+                  <br>
+                  <a class="waves-effect waves-light btn blue darken-1 right"><i class="material-icons left">lock_open</i> Log in</a>
+                </form>
+              </div>
         </header>
+        <br>
+        <!-- Kod för footer -->
+       <!-- <footer class="page-footer blue darken-3">
+            <div class="container">
+                <div class="footer-name blue darken-3">
+                         
+                </div>
+            </div>
+        </footer> -->
     </body>
 </html>
