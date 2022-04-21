@@ -11,15 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<?php 
-require_once('database_connection.php');
-session_start();
-
-
-$chartData = $_SESSION['chartData'];
-$_SESSION['nextPage'] = 'second.php';
-$days = $_SESSION['days'];
-?>
 <!-- Skript för för hamburgermeny för mindre skärmar -->
 <script>
  $(document).ready(function () {
@@ -42,7 +33,22 @@ $(document).ready(function() {
     padding-left: 50px;
     padding-right: 50px;
 }
+div.scroll {
+                height: auto;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
 </style>
+
+<?php 
+session_start();
+require_once("database_connection.php");
+
+$chartData = $_SESSION['chartData'];
+$days = $_SESSION['days'];
+$_SESSION['nextPage'] = 'second.php';
+
+?>
 <title>Gymnasiearbete phishing - Email Phishing</title>
 </head>
     <body>
@@ -66,19 +72,14 @@ $(document).ready(function() {
             <li><a class="waves-effect waves-light btn blue darken-3">Länk</a></li>
             <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li><!-- Lägg till länkar vid behov -->
         </ul>
-
+        
         <header class="main-text">
             <br>
             <br>    
             <div class="container">
                 <div class="row">
-                    <div class="col s12 teal">
+                    <div class="col s12 teal" style="height: 500px">
                         <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae error odit quibusdam corrupti veritatis. Perferendis est officiis, ut minus possimus id eos suscipit error nostrum dicta placeat nam doloremque doloribus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, aspernatur. Sapiente laudantium mollitia ducimus ab at dolor nobis ullam architecto? Reiciendis illo velit odit aut natus vel voluptatem inventore fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem doloribus, architecto illum eveniet corrupti ea alias optio itaque similique laboriosam delectus amet placeat id in odit expedita blanditiis voluptates. Ad.</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
                 <div class="row">
@@ -86,13 +87,13 @@ $(document).ready(function() {
                     <h5><a href="fooling.php" class="waves-effect waves-light btn blue darken-1">Gå till nästa dag</a></h5>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col s12">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
             </div>
-            
-            <?php 
-            echo $chartData;
-            echo '<br>';
-            echo $days;
-            ?>
+
         </header>
 
     </body>

@@ -15,7 +15,6 @@
 require_once('database_connection.php');
 session_start();
 
-
 $chartData = $_SESSION['chartData'];
 $_SESSION['nextPage'] = 'second.php';
 $days = $_SESSION['days'];
@@ -73,7 +72,7 @@ $(document).ready(function() {
             <div class="container">
                 <div class="row">
                     <div class="col s12 teal">
-                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae error odit quibusdam corrupti veritatis. Perferendis est officiis, ut minus possimus id eos suscipit error nostrum dicta placeat nam doloremque doloribus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, aspernatur. Sapiente laudantium mollitia ducimus ab at dolor nobis ullam architecto? Reiciendis illo velit odit aut natus vel voluptatem inventore fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem doloribus, architecto illum eveniet corrupti ea alias optio itaque similique laboriosam delectus amet placeat id in odit expedita blanditiis voluptates. Ad.</h5>
+                        <h5>Det tog <?php echo substr_count($days, ',');?> dagar för alla tusen personer i testlistan att bli antingen infekterade eller åtminstone ha sett phishinglänken. Vi som har jobbat på detta projekt hoppas att ni som läser detta inte är en av de personer som faller för phishingförsök. För att lära dig identifiera phishingförsök och lära dig om olika sorters phishing kan du trycka på teoriknappen under. Vill du gå igenom programmet en gång till trycker du på starta om.</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -82,17 +81,15 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12">
-                    <h5><a href="fooling.php" class="waves-effect waves-light btn blue darken-1">Gå till nästa dag</a></h5>
+                    <div class="col s6">
+                    <h5><a href="teori.php" class="waves-effect waves-light btn blue darken-1">Gå till teorin</a></h5>
+                    </div>
+                    <div class="col s6">
+                    <h5><a href="resetDB.php" class="waves-effect waves-light btn blue darken-1">Starta om</a></h5>
                     </div>
                 </div>
             </div>
-            
-            <?php 
-            echo $chartData;
-            echo '<br>';
-            echo $days;
-            ?>
+        
         </header>
 
     </body>
