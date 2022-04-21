@@ -9,7 +9,7 @@ if(strcmp($_SERVER['SREVER_NAME'],"localhost") == 0){
     $host = "server1.serverdrift.com";
     $user = "alstromh_030520sk";
     $pwd = "C5([61gI(.b4";
-    $db = "alsromh_030520sk";
+    $db = "alstromh_030520sk";
 }
 # dsn - data source name
 $dsn = "mysql:host=$host;dbname=$db";
