@@ -1,25 +1,32 @@
-<?php 
-require_once("database_connection.php");
+<?php
 session_start();
+require_once("database_connection.php");
 
-$sql = "SELECT id FROM MOCK_DATA WHERE fooled = :fooled";
+$sign = $_COOKIE['sign'];
+
+$sql = "SELECT id FROM $sign WHERE fooled = :fooled";
 $stm = $pdo->prepare($sql);
 $stm->execute(array('fooled' => 0));
 $unfooledUserArray = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT id FROM MOCK_DATA WHERE fooled = :fooled";
+$sql = "SELECT id FROM $sign WHERE fooled = :fooled";
 $stm = $pdo->prepare($sql);
 $stm->execute(array('fooled' => 1));
 $fooledUserArray = $stm->fetchAll(PDO::FETCH_ASSOC);
 
+
+$_SESSION['nextPage'] = 'second.php'; 
+
 if (empty($fooledUserArray)){
     $id = 1;
     $fooled = 1;
-    $sql = "UPDATE MOCK_DATA SET fooled=:fooled WHERE id=:id";
+    $sql = "UPDATE $sign SET fooled=:fooled WHERE id=:id";
     $stmt= $pdo->prepare($sql);
     $stmt->execute(array('fooled' => $fooled,'id' => $id));
-    $nextPage = "first.php";
-    $_SESSION['nextPage'] = 'first.php'; 
+
+
+    $nextPage = "second.php";
+    $_SESSION['nextPage'] = 'second.php'; 
 
     $fooledCounter = 1;
     $_SESSION['fooledCounter'] = $fooledCounter;
@@ -30,12 +37,15 @@ if (empty($fooledUserArray)){
     header("location: $nextPage");
 }
 
+
 if (empty($unfooledUserArray)){
     header('location:all_fooled.php');
 }
 
 $destructionArray = array();
-$fooledCounter= $_SESSION['fooledCounter'];
+if (isset($_SESSION['fooledCounter'])){
+    $fooledCounter= $_SESSION['fooledCounter'];
+}
 for($i = 0; $i < count($fooledUserArray); $i++)
 {
     for($x = 0; $x < rand(2,6); $x++)
@@ -55,7 +65,7 @@ for($i = 0; $i < count($fooledUserArray); $i++)
         } else {
             $fooled = 2;
         } 
-        $sql = "UPDATE MOCK_DATA SET fooled=:fooled WHERE id=:id";
+        $sql = "UPDATE $sign SET fooled=:fooled WHERE id=:id";
         $stmt= $pdo->prepare($sql);
         $stmt->execute(array('fooled' => $fooled,'id' => $id));
 
@@ -64,8 +74,44 @@ for($i = 0; $i < count($fooledUserArray); $i++)
     }
 }
 
-$chartData = $_SESSION['chartData'];
+$chartData = $_SESSION['chartData'];    
+
 $days = $_SESSION['days'];
+$days .= strval(substr_count($chartData, ',')) . ', ';
+$_SESSION['days'] = $days;
+
+//Skriv ut rätt meddelande beroende på vilken dag det är. Om användaren har nått sista dagen med meddelanden loopas programmet tills alla är infekterade eller immuna. 
+
+$daysNum = substr_count($days, ',');
+
+switch($daysNum){
+    case 0:
+        $mess = "Detta borde inte behövas";
+        break;
+    case 1:
+        $mess = "Detta är dag ett";
+        break;
+    case 2:
+        $mess = "Detta är dag två";
+        break;
+    case 3:
+        $mess = "Detta är dag tre";
+        break;
+    case 4:
+        $mess = "Dag fyra";
+        break;
+    case 5:
+        $mess = "Och dag fem";
+        break;
+    default:
+        $nextPage = 'fooling.php';
+        $_SESSION['nextPage'] = 'fooling.php';
+        break;
+
+}
+
+
+$chartData = $_SESSION['chartData'];    
 
 $fooledNum = $fooledCounter;
 $chartData .= $fooledNum . ', ';
@@ -73,8 +119,9 @@ $chartData .= $fooledNum . ', ';
 $_SESSION['chartData'] = $chartData;
 $_SESSION['fooledCounter'] = $fooledCounter;
 
-$days .= strval(substr_count($chartData, ',')) . ', ';
-$_SESSION['days'] = $days;
+//Skicka rätt meddelande till sidan.
+$_SESSION['mess'] = $mess;
+
 $nextPage = $_SESSION['nextPage'];
 header("location: $nextPage");
 

@@ -1,3 +1,15 @@
+<?php
+session_start();
+require_once("database_connection.php");
+
+$chartData = $_SESSION['chartData'];
+$days = $_SESSION['days'];
+$_SESSION['nextPage'] = 'second.php';
+
+$mess = $_SESSION['mess'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -33,22 +45,8 @@ $(document).ready(function() {
     padding-left: 50px;
     padding-right: 50px;
 }
-div.scroll {
-                height: auto;
-                overflow-x: hidden;
-                overflow-y: auto;
-            }
 </style>
 
-<?php 
-session_start();
-require_once("database_connection.php");
-
-$chartData = $_SESSION['chartData'];
-$days = $_SESSION['days'];
-$_SESSION['nextPage'] = 'second.php';
-
-?>
 <title>Gymnasiearbete phishing - Email Phishing</title>
 </head>
     <body>
@@ -79,7 +77,7 @@ $_SESSION['nextPage'] = 'second.php';
             <div class="container">
                 <div class="row">
                     <div class="col s12 teal" style="height: 500px">
-                        <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae error odit quibusdam corrupti veritatis. Perferendis est officiis, ut minus possimus id eos suscipit error nostrum dicta placeat nam doloremque doloribus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam, aspernatur. Sapiente laudantium mollitia ducimus ab at dolor nobis ullam architecto? Reiciendis illo velit odit aut natus vel voluptatem inventore fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem doloribus, architecto illum eveniet corrupti ea alias optio itaque similique laboriosam delectus amet placeat id in odit expedita blanditiis voluptates. Ad.</h5>
+                        <h5><?php echo $mess;?></h5>
                     </div>
                 </div>
                 <div class="row">
