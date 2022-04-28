@@ -1,10 +1,9 @@
 <?php
 session_start();
-require_once('database_connection.php');
-
-$chartData = $_SESSION['chartData'];
-$_SESSION['nextPage'] = 'second.php';
-$days = $_SESSION['days'];
+$mess=isset($_GET["mess"]) ? "<p class='text-error'>".$_GET['mess']. "</p>" : "";
+if(!isset($_COOKIE['sign'])) {
+    header("location:firsttime.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@ $days = $_SESSION['days'];
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <!-- Skript för för hamburgermeny för mindre skärmar -->
 <script>
@@ -30,7 +29,6 @@ $(document).ready(function() {
     M.updateTextFields();
   });
 </script>
-
 
 <!-- CSS kod -->
 <style type="text/css">
@@ -68,62 +66,19 @@ $(document).ready(function() {
         </ul>
 
         <header class="main-text">
-            <br>
-            <br>    
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 teal">
-                        <h5>Det tog <?php echo substr_count($days, ',');?> dagar för alla tusen personer i testlistan att bli antingen infekterade eller åtminstone ha sett phishinglänken. Vi som har jobbat på detta projekt hoppas att ni som läser detta inte är en av de personer som faller för phishingförsök. För att lära dig identifiera phishingförsök och lära dig om olika sorters phishing kan du trycka på teoriknappen under. Vill du gå igenom programmet en gång till trycker du på starta om.</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s6">
-                    <h5><a href="teori.php" class="waves-effect waves-light btn blue darken-1">Gå till teorin</a></h5>
-                    </div>
-                    <div class="col s6">
-                    <h5><a href="resetDB.php" class="waves-effect waves-light btn blue darken-1">Starta om</a></h5>
-                    </div>
-                </div>
-            </div>
+            <h1>Phishing</h1>
+            
         
+            <h5><a href="fooling.php" class="waves-effect waves-light btn blue darken-1">Gå till applikationen</a></h5>
+            <h5><a href="theory.php" class="waves-effect waves-light btn blue darken-1">Läs teorin</a></h5>
+
+            <?php
+            
+            echo $mess; 
+            ?>
+            <br>
+            <br>
         </header>
-
+        <br>
     </body>
-    
 </html>
-
-
-<!-- Chart.js (tabeller) -->
-<script>
-  const labels = [
-    <?php echo $days;?>
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Antal lurade per dag',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [<?php echo $chartData;?>],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-</script>
-
-<script>
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-</script>
