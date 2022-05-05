@@ -38,10 +38,6 @@ if (empty($fooledUserArray)){
 }
 
 
-if (empty($unfooledUserArray)){
-    header('location:all_fooled.php');
-}
-
 $destructionArray = array();
 if (isset($_SESSION['fooledCounter'])){
     $fooledCounter= $_SESSION['fooledCounter'];
@@ -104,11 +100,74 @@ switch($daysNum){
         $mess = "Och dag fem";
         break;
     default:
-        $nextPage = 'fooling.php';
-        $_SESSION['nextPage'] = 'fooling.php';
-        break;
+        while (true){
+            $sql = "SELECT id FROM $sign WHERE fooled = :fooled";
+            $stm = $pdo->prepare($sql);
+            $stm->execute(array('fooled' => 0));
+            $unfooledUserArray = $stm->fetchAll(PDO::FETCH_ASSOC);
 
+            if(empty($unfooledUserArray)){
+                $nextPage = 'all_fooled.php';
+                $_SESSION['nextPage'] = $nextPage;
+                break;
+            }
+            $sql = "SELECT id FROM $sign WHERE fooled = :fooled";
+            $stm = $pdo->prepare($sql);
+            $stm->execute(array('fooled' => 1));
+            $fooledUserArray = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+            $destructionArray = array();
+            if (isset($_SESSION['fooledCounter'])){
+                $fooledCounter= $_SESSION['fooledCounter'];
+            }
+            for($i = 0; $i < count($fooledUserArray); $i++)
+            {
+                for($x = 0; $x < rand(2,6); $x++)
+                {
+                    $fooledID = $unfooledUserArray[array_rand($unfooledUserArray)];
+                    $id = $fooledID['id'];
+                    $v = rand(0,4);
+                    $_SESSION['id'] = $id;
+                    if (in_array($id, $destructionArray)){
+                        break;
+                    }
+
+                    if ($v%3 == 1)
+                    {
+                        $fooled = 1;
+                        $fooledCounter += 1;
+                    } else {
+                        $fooled = 2;
+                    } 
+                    $sql = "UPDATE $sign SET fooled=:fooled WHERE id=:id";
+                    $stmt= $pdo->prepare($sql);
+                    $stmt->execute(array('fooled' => $fooled,'id' => $id));
+
+                    $destructionArray[] = $id;        
+                    
+                }
+            }
+
+            $chartData = $_SESSION['chartData'];    
+
+            $days = $_SESSION['days'];
+            $days .= strval(substr_count($chartData, ',')) . ', ';
+            $_SESSION['days'] = $days;
+
+            //Skriv ut rätt meddelande beroende på vilken dag det är. Om användaren har nått sista dagen med meddelanden loopas programmet tills alla är infekterade eller immuna. 
+
+            $daysNum = substr_count($days, ',');
+
+            $chartData = $_SESSION['chartData'];    
+
+            $fooledNum = $fooledCounter;
+            $chartData .= $fooledNum . ', ';
+
+            $_SESSION['chartData'] = $chartData;
+            $_SESSION['fooledCounter'] = $fooledCounter;
+        }
 }
+
 
 
 $chartData = $_SESSION['chartData'];    
