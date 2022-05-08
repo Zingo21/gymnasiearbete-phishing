@@ -88,10 +88,10 @@ switch($daysNum){
         $mess = "Detta är dag ett. Tänk att du får en länk genom email från en avsändare som du tror är riktig men denna avsändare har ändrat både bokstav och lagt till nummer och språket i mailet är dålig. Du ombeds att logga in för att slutföra en bekräftelse. Efer det märker du att din enhet har blivit infekterad och det som du fick skickas vidare till dina vänner som du har i kontaktlistan.";
         break;
     case 2:
-        $mess = "Detta är dag två. Några av dina vänner har fått den koden som du fick med samma innehåll som du fick. De skriver in sina inloggningsuppgifter och sen skickas det vidare till deras vänner om de har i sina kontaktlistor.";
+        $mess = "Detta är dag två. Några av dina vänner har fått den koden som du fick med samma innehåll som du fick. De skriver in sina inloggningsuppgifter och sen skickas det vidare till deras vänner som de har i sina kontaktlistor.";
         break;
     case 3:
-        $mess = "Detta är dag tre. De andra vännerna har fått det meddelande som dina vänner har fått innan och klickar på det. Det skickas vidare till deras  vänner.";
+        $mess = "Detta är dag tre. De andra vännerna har fått det meddelande som dina vänner har fått innan och klickar på det. Det skickas sedan vidare till deras  vänner som de har i sina kontaklistor.";
         break;
     case 4:
         $mess = "Dag fyra. Detta fortsätter tills alla har blivit infekterade.";
