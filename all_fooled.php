@@ -49,22 +49,23 @@ $(document).ready(function() {
         <div class="navbar-fixed">
             <nav class="blue darken-3">
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Gymnasiearbete phishing</a>
+                    <a href="index.php" class="brand-logo">Gymnasiearbete phishing</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#">Start</a></li> 
-                        <li><a href="#">Phishing</a></li> 
-                        <li><a href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li> <!-- Lägg till länkar vid behov -->
+                        <li><a href="index.php">Start</a></li> 
+                        <li><a href="resetDB.php">Phishing</a></li> 
+                        <li><a href="#">Teori</a></li>      <!-- Lägg till länk till teoridelen -->
+                        <li><a href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li> 
                     </ul>
             
                 </div>
             </nav>
         </div>
         <ul class="side-nav" id="mobile-demo">
-            <li><a class="waves-effect waves-light btn blue darken-3" href="#"><i class="material-icons left">home</i>Startsida</a></li> 
-            <li><a class="waves-effect waves-light btn blue darken-3" href="#">Phishing</a></li> 
-            <li><a class="waves-effect waves-light btn blue darken-3">Länk</a></li>
-            <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li><!-- Lägg till länkar vid behov -->
+            <li><a class="waves-effect waves-light btn blue darken-3" href="index.php"><i class="material-icons left">home</i>Startsida</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3" href="resetDB.php">Phishing</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3" href="#">Teori</a></li>    <!-- Lägg till länk till teoridelen -->
+            <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li>
         </ul>
 
         <header class="main-text">
