@@ -85,19 +85,32 @@ switch($daysNum){
         $mess = "Detta borde inte behövas";
         break;
     case 1:
-        $mess = "Detta är dag ett. Tänk att du får en länk genom email från en avsändare som du tror är riktig men denna avsändare har ändrat både bokstav och lagt till nummer och språket i mailet är dålig. Du ombeds att logga in för att slutföra en bekräftelse. Efer det märker du att din enhet har blivit infekterad och det som du fick skickas vidare till dina vänner som du har i kontaktlistan.";
+        $mess = "Dag ett. Du har fått ett email från instagram där dem förklarar att någon har försökt ta sig in på ditt konto. De rekommenderar att du klickar på länken nedan och loggar in för att sedan ändra ditt lösenord. Ovetande gav du nyss dina inloggningsuppgifter till bedragare som kommer använde dem för att skicka falska meddelanden från ditt konto till dina vänner. Än så länge är bara du infekterad men sånt här kan dra iväg snabbt.\n
+        <img src='phishing-example-riktig.jpg' alt='Exempel på phishingmail>";
         break;
     case 2:
-        $mess = "Detta är dag två. Några av dina vänner har fått den koden som du fick med samma innehåll som du fick. De skriver in sina inloggningsuppgifter och sen skickas det vidare till deras vänner som de har i sina kontaktlistor.";
+        $mess = "Dag två. Bedragarna använde ditt konto för att skicka falska meddelanden till dina kompisar. Många av dem förstod att ditt konto blivit hackat men en del klickade på länken i meddelandet och följde samma steg som dig. Bedragarna har nu tillgång till deras konton och kommer skicka fler meddelanden från de kontona till deras kompisar. ";
         break;
     case 3:
-        $mess = "Detta är dag tre. De andra vännerna har fått det meddelande som dina vänner har fått innan och klickar på det. Det skickas sedan vidare till deras  vänner som de har i sina kontaklistor.";
+        $mess = "Dag tre. Exakt samma sak händer denna dag som föregående. Dina vänners vänner får falska meddelanden och trots att många förstår att meddelanden kommer från bedragare kommer en del klicka på dem och bli infekterade. \n
+        Det du har blivit utsatt för nu kallas för phishing (svenska: nätfiske) och är ett stort problem för datasäkersvärlden eftersom bedragaren inte försöker hacka in i deras system utan använder den svagaste länken i systemet: människan:";
         break;
     case 4:
-        $mess = "Dag fyra. Detta fortsätter tills alla har blivit infekterade.";
+        $mess = "Dag fyra. De falska meddelandena sprids mer och mer och allt fler blir infekterade av \"viruset\". \n
+        Denna sortens phishing är inte den enda. En av de vanligaste sortens phishing-attacker kallas för spear phishing (svenska: spjutfiske). Som du hör på namnet fokuserar bedragaren i detta fall på en 'fisk' och tar reda på saker om personen i fråga. Saker som namn, arbetsplats, husdjur och hobbies kan användas av bedragaren för att skriva ett meddelande som ser riktigt ut.";
         break;
     case 5:
-        $mess = "Och dag fem. Då har alla nu blivit infekterade och hackaren har nu kommit åt alla användares inloggningsuppgifter.";
+        $mess = "Dag fem. Meddelandet fortsätter spridas och fler och fler blir infekterade av det. \n
+        Nu undrar du säkert vad du kan göra för att motverka phishing och svaret är enkelt: inte jättemycket. Det finns inte jättemycket du kan göra för att förhindra att du får phishingmail. Det du kan göra är att se till att du inte faller för dem genom att kolla igenom meddelandet noga. Oftast har webbsidan de försöker få dig att trycka på en snarlik URL till den riktiga men den kan skilja sig genom en exempelvis använda .nu istället för .se och vice versa. ";
+        break;
+    case 6:
+        $mess = "Dag sex. Nu påverkas dina vänners vänners vänners vänners vänner, folk du aldrig har träffat av att du valde att trycka på en länk för 6 dagar sen. \n
+        De flesta bedragare döljer sina länkar och tänker du tillbaka på meddelandet du fick första dagen ser du att det var precis vad de gjorde då. Detta för att man inte ska se att länken är fel. Genom att hoovra över länken kan du se vart den leder.\n
+        <img src='phishing-example-riktig.jpg' alt='Exempel på phishingmail>";
+        break;
+    case 7:
+        $mess = "Dag sju. Nu har du antagligen fått tillbaka ditt konto med hjälp från instagram men folk fortsätter infekteras.\n
+        Phishing mail har oftast en brådskande ton för att få dig att inte tänka igenom dina handlingar. Tänkt på att aldrig klicka på en länk eller ladda ner en fil från en källa du inte litar på!";
         break;
     default:
         while (true){
