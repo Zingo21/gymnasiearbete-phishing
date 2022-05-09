@@ -2,4 +2,4 @@
 
 Ett gymnasiearbete om phishing
 
-Länk till sidan: <http://thestra03.online>
+Länk till programmet: <http://thestra03.online>
