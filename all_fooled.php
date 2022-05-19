@@ -49,23 +49,22 @@ $(document).ready(function() {
         <div class="navbar-fixed">
             <nav class="blue darken-3">
                 <div class="nav-wrapper">
-                    <a href="index.php" class="brand-logo">Gymnasiearbete phishing</a>
+                    <a href="#" class="brand-logo">Gymnasiearbete phishing</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="index.php">Start</a></li> 
-                        <li><a href="resetDB.php">Phishing</a></li> 
-                        <li><a href="#">Teori</a></li>      <!-- Lägg till länk till teoridelen -->
-                        <li><a href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li> 
+                        <li><a href="teori.php">Teori</a></li> 
+                        <li><a href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li> <!-- Lägg till länkar vid behov -->
                     </ul>
             
                 </div>
             </nav>
         </div>
         <ul class="side-nav" id="mobile-demo">
-            <li><a class="waves-effect waves-light btn blue darken-3" href="index.php"><i class="material-icons left">home</i>Startsida</a></li> 
-            <li><a class="waves-effect waves-light btn blue darken-3" href="resetDB.php">Phishing</a></li> 
-            <li><a class="waves-effect waves-light btn blue darken-3" href="#">Teori</a></li>    <!-- Lägg till länk till teoridelen -->
-            <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li>
+            <li><a class="waves-effect waves-light btn blue darken-3" href="#"><i class="material-icons left">home</i>Startsida</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3" href="#">Phishing</a></li> 
+            <li><a class="waves-effect waves-light btn blue darken-3">Länk</a></li>
+            <li><a class="waves-effect waves-light btn blue darken-3" href="https://www.github.com/Zingo21/gymnasiearbete-phishing">Github</a></li><!-- Lägg till länkar vid behov -->
         </ul>
 
         <header class="main-text">
@@ -73,7 +72,7 @@ $(document).ready(function() {
             <br>    
             <div class="container">
                 <div class="row">
-                    <div class="col s12 teal">
+                    <div class="col s12">
                         <h5>Det tog <?php echo substr_count($days, ',');?> dagar för alla tusen personer i testlistan att bli antingen infekterade eller åtminstone ha sett phishinglänken. Vi som har jobbat på detta projekt hoppas att ni som läser detta inte är en av de personer som faller för phishingförsök. För att lära dig identifiera phishingförsök och lära dig om olika sorters phishing kan du trycka på teoriknappen under. Vill du gå igenom programmet en gång till trycker du på starta om.</h5>
                     </div>
                 </div>
@@ -84,7 +83,7 @@ $(document).ready(function() {
                 </div>
                 <div class="row">
                     <div class="col s6">
-                    <h5><a href="teori.php" class="waves-effect waves-light btn blue darken-1">Gå till teorin</a></h5>
+                    <h5><a href="theory.php" class="waves-effect waves-light btn blue darken-1">Gå till teorin</a></h5>
                     </div>
                     <div class="col s6">
                     <h5><a href="resetDB.php" class="waves-effect waves-light btn blue darken-1">Starta om</a></h5>
@@ -108,7 +107,7 @@ $(document).ready(function() {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Antal lurade per dag',
+      label: 'Antal lurade',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [<?php echo $chartData;?>],
